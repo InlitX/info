@@ -597,14 +597,18 @@ body {
 
 footer {
 	position: absolute;
-	padding: 3px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: max-content;
+	max-width: calc(100% - 24px);
+	padding: 4px 14px;
 	text-align: center;
-	width: 100%;
+	border-radius: 999px;
 	backdrop-filter: blur(var(--card_filter));
 	-webkit-backdrop-filter: blur(var(--card_filter));
 
 	font-size: 13px;
-	bottom: 0;
+	bottom: 8px;
 }
 
 @media (min-width: 800px) {

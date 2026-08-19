@@ -6,7 +6,8 @@
 
 .projectItem {
 	margin: 0;
-	flex: 1 1 0;
+	flex: 1 1 calc(50% - 7px);
+	max-width: calc(50% - 7px);
 	min-width: 150px;
 	height: 118px;
 	padding: 15px 18px;
@@ -135,17 +136,12 @@
 	transform: rotate(-52deg) scale(1.2);
 }
 
-@media screen and (max-width: 1150px) {
-	.projectItem {
-		flex-basis: calc(50% - 7px);
-	}
-}
-
 @media screen and (max-width: 800px) {
 	.projectItem,
 	.projectItem.a,
 	.projectItem.b {
 		flex-basis: 100%;
+		max-width: 100%;
 		margin: 0;
 		height: auto;
 		min-height: 96px;
