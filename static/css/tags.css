@@ -1,0 +1,48 @@
+.left-tag {
+	gap: 6px;
+	padding: 14px 12px;
+	align-content: flex-start;
+}
+
+.left-tag-item {
+	--tag-pill: 13px;
+	height: auto;
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 11.5px;
+	line-height: 1.3;
+	letter-spacing: 0.01em;
+	border: 1px solid transparent;
+	border-radius: var(--m3-r-xs);
+	background: color-mix(in srgb, var(--main_text_color) 10%, transparent);
+	color: var(--main_text_color);
+	transition:
+		background-color var(--m3-effects-dur) var(--m3-effects),
+		border-radius var(--m3-fast-dur) var(--m3-fast),
+		border-color var(--m3-effects-dur) var(--m3-effects),
+		transform var(--m3-fast-dur) var(--m3-fast);
+}
+.left-tag-item:nth-child(3n + 1) {
+	border-radius: var(--tag-pill);
+	background: var(--m3-accent-soft);
+	color: color-mix(in srgb, var(--m3-accent) 45%, var(--main_text_color));
+}
+.left-tag-item:hover {
+	border-radius: var(--tag-pill);
+	border-color: var(--m3-accent);
+	background: var(--m3-accent-soft);
+	transform: translateY(-2px);
+}
+.left-tag-item:nth-child(3n + 1):hover {
+	border-radius: var(--m3-r-xs);
+}
+.left-tag-item:active {
+	transform: translateY(0) scale(0.94);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.left-tag-item:hover,
+	.left-tag-item:active {
+		transform: none;
+	}
+}

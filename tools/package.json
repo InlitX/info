@@ -1,0 +1,11 @@
+{
+	"name": "snake",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"snake": "node gen_snake.mjs"
+	},
+	"dependencies": {
+		"generate-snake-animation": "^3.5.0"
+	}
+}
