@@ -182,7 +182,10 @@ const PLAYLIST = [
 
 	el.prev.addEventListener("click", function () { load(index - 1, !audio.paused); });
 	el.next.addEventListener("click", function () { load(index + 1, !audio.paused); });
-	el.toggle.addEventListener("click", function () { root.classList.toggle("open"); });
+	el.toggle.addEventListener("click", function () {
+		const open = root.classList.toggle("open");
+		el.toggle.setAttribute("aria-expanded", open ? "true" : "false");
+	});
 	el.vol.addEventListener("input", function () {
 		audio.volume = Number(el.vol.value);
 		audio.muted = audio.volume === 0;
