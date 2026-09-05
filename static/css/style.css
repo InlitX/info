@@ -463,6 +463,16 @@ body {
 	display: block;
 }
 
+.iconItem.copied {
+	width: 95px;
+	transform: translateY(-2px);
+	background: var(--item_hover_color);
+}
+
+.iconItem.copied .iconTip {
+	display: block;
+}
+
 .switch:hover {
 	width: 55px;
 

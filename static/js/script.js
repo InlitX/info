@@ -101,3 +101,51 @@ window.addEventListener("load", function () {
 		loader.classList.add("reveal");
 	}, 100);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+	var xmr = document.querySelector("#xmrCopy");
+	if (!xmr) return;
+
+	var tip = xmr.querySelector(".iconTip");
+	var label = tip.textContent;
+	var timer;
+
+	xmr.addEventListener("click", function () {
+		var address = xmr.dataset.address;
+
+		function done(ok) {
+			tip.textContent = ok ? "Copied!" : "Failed";
+			xmr.classList.add("copied");
+			clearTimeout(timer);
+			timer = setTimeout(function () {
+				tip.textContent = label;
+				xmr.classList.remove("copied");
+			}, 1500);
+		}
+
+		if (navigator.clipboard && navigator.clipboard.writeText) {
+			navigator.clipboard.writeText(address).then(function () {
+				done(true);
+			}, function () {
+				done(false);
+			});
+			return;
+		}
+
+		var input = document.createElement("textarea");
+		input.value = address;
+		input.setAttribute("readonly", "");
+		input.style.position = "fixed";
+		input.style.opacity = "0";
+		document.body.appendChild(input);
+		input.select();
+		var ok = false;
+		try {
+			ok = document.execCommand("copy");
+		} catch (e) {
+			ok = false;
+		}
+		document.body.removeChild(input);
+		done(ok);
+	});
+});
