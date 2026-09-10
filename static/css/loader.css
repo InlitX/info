@@ -1,24 +1,24 @@
 #loader {
 	position: fixed;
 	inset: 0;
-	z-index: 999999;
-	background: #000;
+	z-index: 9999;
+	background: var(--bg);
 	pointer-events: none;
 	clip-path: circle(150% at 100% 100%);
-	transition: clip-path 900ms var(--m3-spatial);
+	transition: clip-path 850ms var(--ease);
 }
 
-#loader.reveal {
+#loader.gone {
 	clip-path: circle(0% at 100% 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {
 	#loader {
 		clip-path: none;
-		transition: opacity 300ms linear;
+		transition: opacity 250ms linear;
 	}
 
-	#loader.reveal {
+	#loader.gone {
 		opacity: 0;
 	}
 }

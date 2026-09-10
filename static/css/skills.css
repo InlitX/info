@@ -1,87 +1,82 @@
-.skill {
-	padding: 18px 0 0;
-}
-
-.skillGrid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
-	gap: 10px;
-}
-
-.skillItem {
+.logoloop {
 	position: relative;
-	width: 100%;
-	max-width: 40px;
-	margin: 0 auto;
-	aspect-ratio: 1/1;
-	display: grid;
-	place-items: center;
-	background: none;
-	border: none;
-	box-shadow: none;
-	transition: transform var(--m3-spatial-dur) var(--m3-spatial);
-}
-.skillItem:hover {
-	transform: translateY(-6px) scale(1.12);
-}
-.skillItem:active {
-	transform: translateY(-2px) scale(0.92);
-	transition-duration: var(--m3-fast-dur);
-	transition-timing-function: var(--m3-fast);
+	overflow-x: hidden;
+	--logoloop-gap: 40px;
+	--logoloop-logoHeight: 40px;
+	--logoloop-fade: clamp(24px, 8%, 120px);
+	-webkit-mask-image: linear-gradient(to right,
+			transparent 0,
+			#000 var(--logoloop-fade),
+			#000 calc(100% - var(--logoloop-fade)),
+			transparent 100%);
+	mask-image: linear-gradient(to right,
+			transparent 0,
+			#000 var(--logoloop-fade),
+			#000 calc(100% - var(--logoloop-fade)),
+			transparent 100%);
+	padding-top: calc(var(--logoloop-logoHeight) * 0.1);
+	padding-bottom: calc(var(--logoloop-logoHeight) * 0.1);
 }
 
-.skillItem img {
-	width: 100%;
-	height: 100%;
+.logoloop__track {
+	display: flex;
+	width: max-content;
+	will-change: transform;
+	user-select: none;
+	position: relative;
+	z-index: 0;
+}
+
+.logoloop__list {
+	display: flex;
+	align-items: center;
+	list-style: none;
+}
+
+.logoloop__item {
+	flex: 0 0 auto;
+	margin-right: var(--logoloop-gap);
+	font-size: var(--logoloop-logoHeight);
+	line-height: 1;
+	overflow: visible;
+}
+
+.logoloop__node {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--logoloop-logoHeight);
+	height: var(--logoloop-logoHeight);
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop__item img {
+	height: var(--logoloop-logoHeight);
+	width: auto;
+	display: block;
 	object-fit: contain;
-	border-radius: 24%;
+	-webkit-user-drag: none;
 	pointer-events: none;
 }
 
-.skillItem .ico-light {
-	display: block;
+.logoloop__item:hover .logoloop__node {
+	transform: scale(1.2);
+	transform-origin: center center;
 }
 
-.skillItem .ico-dark {
-	display: none;
-}
-
-html[data-theme="Dark"] .skillItem .ico-light {
-	display: none;
-}
-
-html[data-theme="Dark"] .skillItem .ico-dark {
-	display: block;
-}
-.skillItem::after {
-	content: attr(data-name);
-	position: absolute;
-	bottom: calc(100% + 9px);
-	left: 50%;
-	transform: translate(-50%, 6px) scale(0.86);
-	transform-origin: 50% 100%;
-	padding: 5px 10px;
-	border-radius: var(--m3-r-xs);
-	background: #1b1f27;
-	color: #ffffff;
-	box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.7);
-	font-size: 11px;
-	white-space: nowrap;
-	opacity: 0;
-	pointer-events: none;
-	z-index: 5;
-	transition:
-		opacity var(--m3-effects-dur) var(--m3-effects),
-		transform var(--m3-spatial-dur) var(--m3-spatial);
-}
-.skillItem:hover::after {
-	opacity: 1;
-	transform: translate(-50%, 0) scale(1);
+@media (max-width: 640px) {
+	.logoloop {
+		--logoloop-gap: 28px;
+		--logoloop-logoHeight: 32px;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.skillItem:hover,
-	.skillItem:active {
-		transform: none;
+	.logoloop__track {
+		transform: translate3d(0, 0, 0) !important;
+	}
+
+	.logoloop__node {
+		transition: none !important;
 	}
 }

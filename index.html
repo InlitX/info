@@ -1,130 +1,495 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>InlitX — Home</title>
 	<link rel="icon" href="./static/img/avatar.png">
 	<meta name="description" content="InlitX. Programming, development and hacking. Flutter apps, open source tools and Obsidian dashboards.">
 	<meta name="keywords" content="InlitX, inlitx, portfolio, Flutter, Dart, Kotlin, open source, Obsidian, streak, GymMane, Skipix">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="./static/css/style.css?v=48">
-	<link rel="stylesheet" href="./static/css/root.css?v=47">
-	<link rel="stylesheet" href="./static/css/shapes.css?v=47">
-	<link rel="stylesheet" href="./static/css/m3.css?v=47">
-	<link rel="stylesheet" href="./static/css/tags.css?v=47">
-	<link rel="stylesheet" href="./static/css/type.css?v=47">
-	<link rel="stylesheet" href="./static/css/cards.css?v=47">
-	<link rel="stylesheet" href="./static/css/player.css?v=47">
-	<link rel="stylesheet" href="./static/css/skills.css?v=47">
-	<link rel="stylesheet" href="./static/css/timeline.css?v=47">
-	<link rel="stylesheet" href="./static/css/heatmap.css?v=47">
-	<link rel="stylesheet" href="./static/css/loader.css?v=47">
+	<meta name="theme-color" content="#0a0a0a">
+	<meta property="og:title" content="InlitX — Home">
+	<meta property="og:description" content="Programming, development and hacking. I turn loose ideas into things I use every day.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://InlitX.xyz">
+	<script>
+		(function () {
+			var root = document.documentElement;
+			root.classList.add("js");
+			var saved = document.cookie.match(/(?:^|;\s*)themeState=(Dark|Light)/);
+			root.dataset.theme = saved ? saved[1] : "Dark";
+		})();
+	</script>
+	<link rel="stylesheet" href="./static/css/base.css?v=63">
+	<link rel="stylesheet" href="./static/css/nav.css?v=63">
+	<link rel="stylesheet" href="./static/css/hero.css?v=63">
+	<link rel="stylesheet" href="./static/css/sections.css?v=63">
+	<link rel="stylesheet" href="./static/css/player.css?v=63">
+	<link rel="stylesheet" href="./static/css/skills.css?v=63">
+	<link rel="stylesheet" href="./static/css/timeline.css?v=63">
+	<link rel="stylesheet" href="./static/css/loader.css?v=63">
 </head>
 
 <body>
 
 	<div id="loader"></div>
-	<div class="page-filter"></div>
 
-	<div class="page">
-		<div class="col-left">
+	<nav class="nav" id="nav">
+		<div class="navInner">
+			<a class="brand" href="#top">
+				<span class="tilde">~/</span>
+				<span class="scramble" data-text="inlitx">inlitx</span>
+			</a>
 
-			<div class="logo">
-				<span class="logoShape" style="background-image: url(./static/img/avatar.png);"></span>
+			<div class="navLinks">
+				<a href="#projects">projects</a>
+				<a href="#stack">stack</a>
+				<a href="#journey">journey</a>
 			</div>
 
-			<div class="left-div left-des">
-				<div class="left-des-item">
-					<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-						<path d="M512 249.976471c-99.388235 0-180.705882 81.317647-180.705882 180.705882s81.317647 180.705882 180.705882 180.705882 180.705882-81.317647 180.705882-180.705882-81.317647-180.705882-180.705882-180.705882z m0 301.17647c-66.258824 0-120.470588-54.211765-120.470588-120.470588s54.211765-120.470588 120.470588-120.470588 120.470588 54.211765 120.470588 120.470588-54.211765 120.470588-120.470588 120.470588z"></path>
-						<path d="M512 39.152941c-216.847059 0-391.529412 174.682353-391.529412 391.529412 0 349.364706 391.529412 572.235294 391.529412 572.235294s391.529412-222.870588 391.529412-572.235294c0-216.847059-174.682353-391.529412-391.529412-391.529412z m0 891.482353C424.658824 873.411765 180.705882 686.682353 180.705882 430.682353c0-183.717647 147.576471-331.294118 331.294118-331.294118s331.294118 147.576471 331.294118 331.294118c0 256-243.952941 442.729412-331.294118 499.952941z"></path>
+			<div class="navActions">
+				<button type="button" class="iconBtn themeBtn" id="themeBtn" aria-label="Toggle theme">
+					<svg class="ttIcon" viewBox="0 0 24 24" aria-hidden="true">
+						<clipPath id="ttclip">
+							<path d="M0-11h19A1 1 0 0 0 36 2v22H0Z" />
+						</clipPath>
+						<g clip-path="url(#ttclip)">
+							<circle cx="12" cy="12" r="6.4" />
+							<path d="M13.7 2.7c0 1-.7 1.8-1.7 1.8s-1.8-.8-1.8-1.8S11 1 12 1s1.7.7 1.7 1.7zm-3.5 19.5c0-1 .8-1.7 1.8-1.7s1.6.6 1.6 1.6-.7 1.8-1.7 1.8-1.8-.8-1.8-1.8zm11.5-8c-1 0-1.7-.7-1.7-1.7s.7-1.8 1.7-1.8 1.8.8 1.8 1.8-.9 1.6-1.9 1.6zM2.2 10.7c1 0 1.8.8 1.8 1.8s-.8 1.7-1.8 1.7-1.7-.7-1.7-1.7.7-1.8 1.7-1.8zm4.4-5.3c0 1-.8 1.7-1.7 1.7-1 0-1.8-.7-1.8-1.7s.8-1.8 1.8-1.8 1.7.8 1.7 1.8zm12.5 16c-1 0-1.8-.8-1.8-1.8s.8-1.7 1.8-1.7 1.7.7 1.7 1.7-.8 1.8-1.7 1.8zm1.8-16c0 1-.8 1.7-1.8 1.7s-1.8-.8-1.8-1.7c0-1 .8-1.8 1.8-1.8s1.8.8 1.8 1.8zm-16 12.4c1 0 1.7.8 1.7 1.8s-.7 1.7-1.7 1.7-1.8-.8-1.8-1.7c0-1 .8-1.8 1.8-1.8z" />
+						</g>
 					</svg>
-					Your House
-				</div>
-				<div class="left-des-item">
-					<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-						<path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m361.6 384h-146.4c-4.6-88.6-22.4-169.4-49.6-231.4 101.6 41.6 175.4 130.4 196 231.4zM512 896c-3.4 0-8.6-2.2-15.6-11.4-11-14.4-23-38.4-33.4-71.6-15.8-50.2-26.4-115.4-29.6-189h157.2c-3.2 73.6-13.8 138.8-29.6 189-10.4 33.2-22.4 57.2-33.4 71.6-7 9.2-12.2 11.4-15.6 11.4z m-78.6-320c3.2-73.6 13.8-138.8 29.6-189 10.4-33.2 22.4-57.2 33.4-71.6C503.4 306.2 508.6 304 512 304s8.6 2.2 15.6 11.4c11 14.4 23 38.4 33.4 71.6 15.8 50.2 26.4 115.4 29.6 189H433.4z m-86.8-359.4c-27.2 62-45 142.8-49.6 231.4H150.4c20.6-101 94.4-189.8 196-231.4zM150.4 576h146.6c4.6 88.6 22.4 169.4 49.6 231.4-101.6-41.6-175.4-130.4-196-231.4z m527 231.4c27.2-62 45-142.8 49.6-231.4h146.6c-20.6 101-94.4 189.8-196.2 231.4z"></path>
-					</svg>
-					<a target="_blank" rel="noopener" href="https://InlitX.xyz">InlitX.xyz</a>
-				</div>
-				<div class="left-des-item">
-					<svg viewBox="0 -960 960 960" aria-hidden="true">
-						<path d="M480-120 200-272v-240L40-600l440-240 440 240v320h-80v-276l-80 44v240L480-120Zm0-332 274-148-274-148-274 148 274 148Zm0 241 200-108v-151L480-360 280-470v151l200 108Z" />
-					</svg>
-					Coding student
-				</div>
-				<div class="left-des-item">
-					<svg viewBox="0 -960 960 960" aria-hidden="true">
-						<path d="M120-120v-720h360v160h360v560H120Zm80-80h200v-80H200v80Zm0-160h200v-80H200v80Zm0-160h200v-80H200v80Zm0-160h200v-80H200v80Zm280 480h280v-400H480v400Zm80-240v-80h120v80H560Zm0 160v-80h120v80H560Z" />
-					</svg>
-					InlitX Apps
-				</div>
-			</div>
+				</button>
 
-			<div class="left-div left-tag">
-				<div class="left-tag-item">Programming</div>
-				<div class="left-tag-item">Development</div>
-				<div class="left-tag-item">Hacking</div>
-				<div class="left-tag-item">Flutter</div>
-				<div class="left-tag-item">Dart</div>
-				<div class="left-tag-item">Kotlin</div>
-				<div class="left-tag-item">Android</div>
-				<div class="left-tag-item">Open Source</div>
-				<div class="left-tag-item">Privacy</div>
+				<button type="button" class="iconBtn menuBtn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+					<span class="menuBar"></span>
+					<span class="menuBar"></span>
+					<span class="menuBar"></span>
+				</button>
 			</div>
+		</div>
 
-			<div class="player open" id="player">
-				<div class="playerTop">
-					<div class="playerCover"><span></span></div>
-					<div class="playerMeta">
-						<div class="playerTitle">—</div>
-						<div class="playerArtist">—</div>
+		<div class="mobileMenu">
+			<a href="#projects">projects</a>
+			<a href="#stack">stack</a>
+			<a href="#journey">journey</a>
+		</div>
+	</nav>
+
+	<main class="wrap" id="top">
+
+		<div class="pane paneTop">
+			<section class="hero">
+				<div class="heroTop">
+					<div class="logo">
+						<span class="logoShape" style="background-image: url(./static/img/avatar.png);"></span>
+					</div>
+
+					<div class="heroIdent">
+						<div class="heroName">
+							<h1>InlitX</h1>
+						</div>
+						<p class="heroRole">Programming · Development · Hacking</p>
 					</div>
 				</div>
 
-				<div class="playerSeek">
-					<div class="track">
-						<div class="fill"></div>
-						<div class="rest"></div>
-						<div class="knob"></div>
+				<div class="metaGrid">
+					<div class="metaItem">
+						<span class="metaIcon">
+							<svg viewBox="0 -960 960 960" aria-hidden="true">
+								<path d="M480-120 200-272v-240L40-600l440-240 440 240v320h-80v-276l-80 44v240L480-120Zm0-332 274-148-274-148-274 148 274 148Zm0 241 200-108v-151L480-360 280-470v151l200 108Z" />
+							</svg>
+						</span>
+						<span>Coding student</span>
+					</div>
+
+					<div class="metaItem">
+						<span class="metaIcon">
+							<svg viewBox="0 -960 960 960" aria-hidden="true">
+								<path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Z" />
+							</svg>
+						</span>
+						<span>Your House</span>
+					</div>
+
+					<div class="metaItem">
+						<span class="metaIcon">
+							<svg viewBox="0 -960 960 960" aria-hidden="true">
+								<path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z" />
+							</svg>
+						</span>
+						<a href="mailto:inlitx@proton.me">inlitx@proton.me</a>
+					</div>
+
+					<div class="metaItem">
+						<span class="metaIcon">
+							<svg viewBox="0 -960 960 960" aria-hidden="true">
+								<path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+							</svg>
+						</span>
+						<span id="clock">--:--</span>
+					</div>
+
+					<div class="metaItem">
+						<span class="metaIcon">
+							<svg viewBox="0 -960 960 960" aria-hidden="true">
+								<path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z" />
+							</svg>
+						</span>
+						<a target="_blank" rel="noopener" href="https://InlitX.xyz">InlitX.xyz</a>
+					</div>
+
+					<div class="metaItem">
+						<span class="metaIcon">
+							<svg viewBox="0 0 1024 1024" aria-hidden="true">
+								<path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
+							</svg>
+						</span>
+						<a target="_blank" rel="noopener" href="https://github.com/InlitX">github.com/InlitX</a>
 					</div>
 				</div>
-				<div class="playerTime">
-					<span class="t-now">0:00</span>
-					<span class="t-dur">--:--</span>
+
+				<p class="heroProse">
+					I turn <strong>loose ideas</strong> into things I actually use every day &mdash; mostly Android apps built with
+					<a class="tag" style="--t-fg: #4bb8f0; --t-rot: -9deg;" target="_blank" rel="noopener" href="https://flutter.dev"><span class="tagGlyph" aria-hidden="true"><img src="./static/icons/flutter.svg" alt="" loading="lazy"></span><span class="tagWord">Flutter</span></a>,
+					<a class="tag" style="--t-fg: #35bdb3; --t-rot: 7deg;" target="_blank" rel="noopener" href="https://dart.dev"><span class="tagGlyph" aria-hidden="true"><img src="./static/icons/dart.svg" alt="" loading="lazy"></span><span class="tagWord">Dart</span></a>
+					and
+					<a class="tag" style="--t-fg: #a97bff; --t-rot: -6deg;" target="_blank" rel="noopener" href="https://kotlinlang.org"><span class="tagGlyph" aria-hidden="true"><img src="./static/icons/kotlin.svg" alt="" loading="lazy"></span><span class="tagWord">Kotlin</span></a>.
+					Everything I ship is <strong>open source</strong>, offline first and free of ads &mdash; because that is the
+					software I wanted to use and could not find.
+				</p>
+
+				<div class="heroActions">
+					<img class="ctaNudge" src="./static/img/check-projects.png?v=63" alt="" aria-hidden="true">
+
+					<a class="btn btnProjects" href="#projects">
+						<svg viewBox="0 -960 960 960" aria-hidden="true">
+							<path d="M200-520q-33 0-56.5-23.5T120-600v-160q0-33 23.5-56.5T200-840h160q33 0 56.5 23.5T440-760v160q0 33-23.5 56.5T360-520H200Zm0 400q-33 0-56.5-23.5T120-200v-160q0-33 23.5-56.5T200-440h160q33 0 56.5 23.5T440-360v160q0 33-23.5 56.5T360-120H200Zm400-400q-33 0-56.5-23.5T520-600v-160q0-33 23.5-56.5T600-840h160q33 0 56.5 23.5T840-760v160q0 33-23.5 56.5T760-520H600Zm0 400q-33 0-56.5-23.5T520-200v-160q0-33 23.5-56.5T600-440h160q33 0 56.5 23.5T840-360v160q0 33-23.5 56.5T760-120H600Z" />
+						</svg>
+						Projects
+					</a>
+
+					<a class="btn ghost" href="mailto:inlitx@proton.me">
+						<svg viewBox="0 -960 960 960" aria-hidden="true">
+							<path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z" />
+						</svg>
+						Contact
+					</a>
+
+					<div class="heroSocials">
+						<span class="vSep"></span>
+
+						<a class="iconBtn" target="_blank" rel="noopener" href="https://github.com/InlitX" aria-label="GitHub">
+							<svg viewBox="0 0 1024 1024" aria-hidden="true">
+								<path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
+							</svg>
+							<span class="tip">GitHub</span>
+						</a>
+
+						<a class="iconBtn" target="_blank" rel="noopener" href="https://ko-fi.com/inlitx" aria-label="Ko-fi">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+							</svg>
+							<span class="tip">Ko-fi</span>
+						</a>
+
+						<a class="iconBtn" href="mailto:inlitx@proton.me" aria-label="Mail">
+							<svg viewBox="0 -960 960 960" aria-hidden="true">
+								<path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z" />
+							</svg>
+							<span class="tip">Mail</span>
+						</a>
+
+						<button type="button" class="iconBtn" id="xmrCopy" aria-label="Copy Monero address"
+							data-address="44SECMEf3rfV228kpy3Gs48wLmLXnq231gAMG7ULYoCWBWLYLHdwYV7YFkhMk31DR5P7SRAyRPyhkYaehtgEoajASz7qubq">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M12 0C5.373 0 0 5.373 0 12c0 1.324.215 2.598.611 3.789h3.585V6.503L12 14.309l7.804-7.806v9.286h3.585A11.956 11.956 0 0 0 24 12c0-6.627-5.373-12-12-12m-1.629 15.937L6.735 12.3v5.472H1.807A12 12 0 0 0 12 24a12 12 0 0 0 10.193-6.23h-4.928V12.3l-3.636 3.637-1.63 1.63z"></path>
+							</svg>
+							<span class="tip">Monero</span>
+						</button>
+
+						<div class="vinylStack" id="vinylStack">
+							<button type="button" class="vinyl" id="vinyl" aria-label="Play music" aria-pressed="false">
+								<svg class="vinylDisk" width="300" height="256" viewBox="0 0 300 256" fill="none" xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true">
+									<g class="vinylPlate">
+										<g filter="url(#vinylBlur)">
+											<path fill-rule="evenodd" clip-rule="evenodd"
+												d="M129.27 20.18c-60.018 0-108.73 48.712-108.73 108.73.003 60.019 48.712 108.73 108.73 108.73S238 188.929 238 128.91c0-60.018-48.711-108.73-108.73-108.73m0 105.68a3.048 3.048 0 1 1 .005 6.097 3.048 3.048 0 0 1-.005-6.097"
+												fill="#000" fill-opacity=".509" />
+										</g>
+										<path fill-rule="evenodd" clip-rule="evenodd"
+											d="M127.677 17.83c-60.018 0-108.73 48.71-108.73 108.73 0 60.018 48.712 108.729 108.73 108.729s108.73-48.711 108.73-108.729c0-60.02-48.711-108.73-108.73-108.73m0 105.679a3.05 3.05 0 0 1 3.051 3.051 3.05 3.05 0 0 1-3.051 3.05 3.05 3.05 0 0 1-3.05-3.05 3.05 3.05 0 0 1 3.05-3.051"
+											fill="#000" />
+										<path fill-rule="evenodd" clip-rule="evenodd"
+											d="M127.677 86.982c-21.84 0-39.577 17.738-39.577 39.578s17.737 39.577 39.577 39.577 39.578-17.737 39.578-39.577-17.738-39.578-39.578-39.578m0 36.968c1.44 0 2.61 1.17 2.61 2.61s-1.17 2.609-2.61 2.609a2.61 2.61 0 0 1 0-5.219"
+											fill="#333" />
+										<path fill-rule="evenodd" clip-rule="evenodd"
+											d="M127.677 17.83c-60.018 0-108.73 48.71-108.73 108.73 0 60.018 48.712 108.729 108.73 108.729s108.73-48.711 108.73-108.729c0-60.02-48.711-108.73-108.73-108.73m0 2.112c58.861 0 106.638 47.757 106.638 106.62s-47.777 106.637-106.638 106.637c-58.86 0-106.637-47.776-106.637-106.637.002-58.861 47.777-106.62 106.637-106.62"
+											fill="#000" />
+										<path fill-rule="evenodd" clip-rule="evenodd"
+											d="M182.665 126.56c0 30.356-24.631 55.005-54.988 55.005v51.632c58.861 0 106.638-47.776 106.638-106.637z"
+											fill="url(#vinylRightHighlight)" />
+										<path fill-rule="evenodd" clip-rule="evenodd"
+											d="M72.69 126.56c0-30.357 24.631-55.006 54.988-55.006v-51.63C68.817 19.924 21.04 67.699 21.04 126.56z"
+											fill="url(#vinylLeftHighlight)" />
+										<path fill-rule="evenodd" clip-rule="evenodd"
+											d="M156.288 97.949c-15.792-15.792-41.429-15.792-57.221 0s-15.792 41.429 0 57.221 41.429 15.792 57.221 0 15.792-41.429 0-57.221m-1.258 1.258c15.093 15.098 15.093 39.607 0 54.705-15.098 15.093-39.607 15.093-54.705 0-15.093-15.098-15.093-39.607 0-54.705 15.098-15.093 39.607-15.093 54.705 0"
+											fill="url(#vinylInnerRing)" />
+										<path fill-rule="evenodd" clip-rule="evenodd"
+											d="M149.987 104.249c-12.313-12.318-32.307-12.318-44.62 0-12.319 12.313-12.319 32.308 0 44.621 12.313 12.318 32.307 12.318 44.62 0 12.319-12.313 12.319-32.308 0-44.621m-20.153 20.154a3.046 3.046 0 0 1 0 4.313 3.046 3.046 0 0 1-4.314 0 3.046 3.046 0 0 1 2.157-5.204c.809 0 1.584.32 2.157.891"
+											fill="url(#vinylLabel)" />
+										<path opacity=".743" fill-rule="evenodd" clip-rule="evenodd"
+											d="M153.508 100.729a36.44 36.44 0 0 0-14.27-8.822l-.729 2.187a34.1 34.1 0 0 1 13.365 8.269 34.1 34.1 0 0 1 9.169 16.597l2.245-.505a36.3 36.3 0 0 0-9.78-17.726m-59.56 20.106-2.286-.394c-1.899 11.273 1.492 23.263 10.185 31.949 8.663 8.669 20.611 12.066 31.855 10.197l-.376-2.274c-10.533 1.751-21.723-1.44-29.845-9.557-8.14-8.146-11.314-19.365-9.533-29.921"
+											fill="#fff" />
+									</g>
+
+									<g class="vinylArm" filter="url(#vinylArmShadow)">
+										<path
+											d="M206.145 165.152c6.367-6.438 9.444-8.059 15.366-17.041l33.938-66.264c-2.433-2.56-5.168-5.716-4.286-8.36l13.134-24.374c.987-1.497 5.2-1.658 8.655-1.441l3.485-6.805 5.182 3.018-3.337 6.675c2.68 2.689 3.933 5.954 3.344 7.716l-12.298 25.326c-.569.864-5.522 1.718-8.211 1.292l-33.588 67.186c-5.922 8.982-10.693 11.653-18.151 18.668l1.617 2.798-33.413 19.526-4.961-6.602 30.124-24.226z"
+											fill="#000" />
+									</g>
+
+									<defs>
+										<radialGradient id="vinylRightHighlight" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+											gradientTransform="rotate(-45 398.653 -166.247)scale(66.8573 150.807)">
+											<stop stop-color="#fff" />
+											<stop offset="1" stop-color="#fff" stop-opacity="0" />
+										</radialGradient>
+										<radialGradient id="vinylLeftHighlight" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+											gradientTransform="rotate(135 6.393 14.318)scale(66.8573 150.807)">
+											<stop stop-color="#fff" />
+											<stop offset="1" stop-color="#fff" stop-opacity="0" />
+										</radialGradient>
+										<radialGradient id="vinylInnerRing" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+											gradientTransform="matrix(0 112.41 -33.3354 0 127.679 126.553)">
+											<stop stop-color="#6c6c6c" />
+											<stop offset="1" stop-color="#3e3e3e" />
+										</radialGradient>
+										<radialGradient id="vinylLabel" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+											gradientTransform="matrix(0 90.6513 -31.5539 0 127.677 126.56)">
+											<stop stop-color="#f7f7f7" />
+											<stop offset="1" stop-color="#e1e1e1" />
+										</radialGradient>
+										<filter id="vinylBlur" x="13.141" y="12.781" width="232.259" height="232.259" filterUnits="userSpaceOnUse"
+											color-interpolation-filters="sRGB">
+											<feFlood flood-opacity="0" result="BackgroundImageFix" />
+											<feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+											<feGaussianBlur stdDeviation="3.7" result="effect1_foregroundBlur_22_63" />
+										</filter>
+										<filter id="vinylArmShadow" x="168.621" y="40.867" width="117.148" height="160.205" filterUnits="userSpaceOnUse"
+											color-interpolation-filters="sRGB">
+											<feFlood flood-opacity="0" result="BackgroundImageFix" />
+											<feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+											<feOffset dy="4" />
+											<feGaussianBlur stdDeviation="2" />
+											<feComposite in2="hardAlpha" operator="out" />
+											<feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+											<feBlend in2="BackgroundImageFix" result="effect1_dropShadow_22_63" />
+											<feBlend in="SourceGraphic" in2="effect1_dropShadow_22_63" result="shape" />
+											<feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+											<feOffset />
+											<feGaussianBlur stdDeviation="1" />
+											<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+											<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
+											<feBlend in2="shape" result="effect2_innerShadow_22_63" />
+										</filter>
+									</defs>
+								</svg>
+							</button>
+
+							<button type="button" class="vinylList" id="vinylListBtn" aria-label="Track list" aria-expanded="false"
+								aria-controls="miniList">
+								<svg viewBox="0 -960 960 960" aria-hidden="true">
+									<path d="M120-320v-80h280v80H120Zm0-160v-80h440v80H120Zm0-160v-80h440v80H120Zm520 480v-320l240 160-240 160Z" />
+								</svg>
+							</button>
+
+							<div class="miniList" id="miniList"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section reveal" id="activity">
+				<div class="sectionHead">
+					<h2>activity</h2>
+					<a target="_blank" rel="noopener" href="https://github.com/InlitX">github &rarr;</a>
+				</div>
+				<div class="activity">
+					<img id="snake" src="./static/svg/snake.svg?v=63" alt="GitHub contribution graph">
+				</div>
+			</section>
+		</div>
+
+		<div class="pane">
+			<section class="section reveal" id="projects">
+				<div class="sectionHead">
+					<h2>featured projects</h2>
+				</div>
+				<div class="cardGrid stagger">
+
+					<article class="card">
+						<div class="cardShot fit">
+							<img src="./static/img/projects/obsidian-gallery.png?v=63" alt="Obsidian Gallery - Project thumbnail">
+						</div>
+						<div class="cardBody">
+							<div class="cardTop">
+								<h3>Obsidian Gallery</h3>
+								<div class="cardLinks">
+									<a target="_blank" rel="noreferrer" href="https://obsidian.inlitx.xyz/" aria-label="Obsidian Gallery live site">
+										<svg viewBox="0 -960 960 960" aria-hidden="true">
+											<path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z" />
+										</svg>
+									</a>
+								</div>
+							</div>
+							<p>Dashboard templates for Obsidian. Drop them in a vault and get a home screen that actually looks designed.</p>
+							<div class="cardTech">
+								<img src="./static/icons/obsidian.svg" alt="Obsidian" title="Obsidian">
+								<img src="./static/icons/css.svg" alt="CSS" title="CSS">
+							</div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="cardShot">
+							<img src="./static/img/projects/streak.png?v=63" alt="streak - Project thumbnail">
+						</div>
+						<div class="cardBody">
+							<div class="cardTop">
+								<h3>streak</h3>
+								<div class="cardLinks">
+									<a target="_blank" rel="noreferrer" href="https://github.com/InlitX/streak" aria-label="streak on GitHub">
+										<svg viewBox="0 0 1024 1024" aria-hidden="true">
+											<path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
+										</svg>
+									</a>
+									<a target="_blank" rel="noreferrer" href="https://inlitx.github.io/streak/" aria-label="streak live site">
+										<svg viewBox="0 -960 960 960" aria-hidden="true">
+											<path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z" />
+										</svg>
+									</a>
+								</div>
+							</div>
+							<p>Habit tracker with no account, no ads and no sync. Your streaks stay on your phone, where they belong.</p>
+							<div class="cardTech">
+								<img src="./static/icons/flutter.svg" alt="Flutter" title="Flutter">
+								<img src="./static/icons/dart.svg" alt="Dart" title="Dart">
+							</div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="cardShot">
+							<img src="./static/img/projects/gymmane.png?v=63" alt="GymMane - Project thumbnail">
+						</div>
+						<div class="cardBody">
+							<div class="cardTop">
+								<h3>GymMane</h3>
+								<div class="cardLinks">
+									<a target="_blank" rel="noreferrer" href="https://github.com/InlitX/GymMane" aria-label="GymMane on GitHub">
+										<svg viewBox="0 0 1024 1024" aria-hidden="true">
+											<path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
+										</svg>
+									</a>
+									<a target="_blank" rel="noreferrer" href="https://inlitx.github.io/GymMane/" aria-label="GymMane live site">
+										<svg viewBox="0 -960 960 960" aria-hidden="true">
+											<path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z" />
+										</svg>
+									</a>
+								</div>
+							</div>
+							<p>Offline gym tracker for Android. Log sets between exercises without waiting for a spinner or a login screen.</p>
+							<div class="cardTech">
+								<img src="./static/icons/flutter.svg" alt="Flutter" title="Flutter">
+								<img src="./static/icons/androidstudio.svg" alt="Android Studio" title="Android Studio">
+							</div>
+						</div>
+					</article>
+
+					<article class="card">
+						<div class="cardShot">
+							<img src="./static/img/projects/skipix.png?v=63" alt="Skipix - Project thumbnail">
+						</div>
+						<div class="cardBody">
+							<div class="cardTop">
+								<h3>Skipix</h3>
+								<div class="cardLinks">
+									<a target="_blank" rel="noreferrer" href="https://github.com/InlitX/Skipix" aria-label="Skipix on GitHub">
+										<svg viewBox="0 0 1024 1024" aria-hidden="true">
+											<path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
+										</svg>
+									</a>
+								</div>
+							</div>
+							<p>Browser extension that skips Netflix ads and recaps for you, so the remote stays on the table.</p>
+							<div class="cardTech">
+								<img src="./static/icons/javascript.svg" alt="JavaScript" title="JavaScript">
+								<img src="./static/icons/github.svg" alt="GitHub" title="GitHub">
+							</div>
+						</div>
+					</article>
+
+				</div>
+			</section>
+		</div>
+
+		<div class="pane">
+			<section class="section reveal" id="sites">
+				<div class="sectionHead">
+					<h2>around the web</h2>
 				</div>
 
-				<div class="playerControls">
-					<button type="button" class="prev" aria-label="Previous">
-						<svg viewBox="0 -960 960 960" aria-hidden="true">
-							<path d="M220-280v-400q0-17 11.5-28.5T260-720q17 0 28.5 11.5T300-680v400q0 17-11.5 28.5T260-240q-17 0-28.5-11.5T220-280Zm458-1L430-447q-9-6-13.5-14.5T412-480q0-10 4.5-18.5T430-513l248-166q5-4 11-5t11-1q16 0 28 11t12 29v330q0 18-12 29t-28 11q-5 0-11-1t-11-5Zm-18-199Zm0 90v-180l-136 90 136 90Z" />
+				<div class="stagger">
+					<a class="linkRow" target="_blank" rel="noopener" href="https://InlitX.xyz">
+						<span class="linkRowIcon">
+							<svg viewBox="0 -960 960 960" aria-hidden="true">
+								<path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z" />
+							</svg>
+						</span>
+						<span class="linkRowText">
+							<b>InlitX.xyz</b>
+							<span>this site &mdash; the front door</span>
+						</span>
+						<svg class="linkRowArrow" viewBox="0 -960 960 960" aria-hidden="true">
+							<path d="M226-234 170-290l466-466H367v-79h404v404h-79v-269L226-234Z" />
 						</svg>
-					</button>
-					<button type="button" class="play" aria-label="Play"></button>
-					<button type="button" class="next" aria-label="Next">
-						<svg viewBox="0 -960 960 960" aria-hidden="true">
-							<path d="M660-280v-400q0-17 11.5-28.5T700-720q17 0 28.5 11.5T740-680v400q0 17-11.5 28.5T700-240q-17 0-28.5-11.5T660-280Zm-440-35v-330q0-18 12-29t28-11q5 0 11 1t11 5l248 166q9 6 13.5 14.5T548-480q0 10-4.5 18.5T530-447L282-281q-5 4-11 5t-11 1q-16 0-28-11t-12-29Zm80-165Zm0 90 136-90-136-90v180Z" />
+					</a>
+
+					<a class="linkRow" target="_blank" rel="noopener" href="https://links.inlitx.xyz">
+						<span class="linkRowIcon">
+							<svg viewBox="0 -960 960 960" aria-hidden="true">
+								<path d="M280-280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h120q17 0 28.5 11.5T440-640q0 17-11.5 28.5T400-600H280q-50 0-85 35t-35 85q0 50 35 85t85 35h120q17 0 28.5 11.5T440-320q0 17-11.5 28.5T400-280H280Zm80-160q-17 0-28.5-11.5T320-480q0-17 11.5-28.5T360-520h240q17 0 28.5 11.5T640-480q0 17-11.5 28.5T600-440H360Zm200 160q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h120q50 0 85-35t35-85q0-50-35-85t-85-35H560q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h120q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H560Z" />
+							</svg>
+						</span>
+						<span class="linkRowText">
+							<b>links.inlitx.xyz</b>
+							<span>every profile in one place</span>
+						</span>
+						<svg class="linkRowArrow" viewBox="0 -960 960 960" aria-hidden="true">
+							<path d="M226-234 170-290l466-466H367v-79h404v404h-79v-269L226-234Z" />
 						</svg>
-					</button>
+					</a>
 				</div>
+			</section>
 
-				<div class="playerVol">
-					<button type="button" class="mute" aria-label="Mute"></button>
-					<input type="range" min="0" max="1" step="0.01" value="0.6" aria-label="Volume">
-					<button type="button" class="listToggle" aria-label="Track list" aria-expanded="true">
-						<svg viewBox="0 -960 960 960" aria-hidden="true">
-							<path d="M640-160q-50 0-85-35t-35-85q0-50 35-85t85-35q11 0 21 1.5t19 6.5v-288q0-17 11.5-28.5T720-720h120q17 0 28.5 11.5T880-680q0 17-11.5 28.5T840-640h-80v360q0 50-35 85t-85 35ZM160-320q-17 0-28.5-11.5T120-360q0-17 11.5-28.5T160-400h240q17 0 28.5 11.5T440-360q0 17-11.5 28.5T400-320H160Zm0-160q-17 0-28.5-11.5T120-520q0-17 11.5-28.5T160-560h400q17 0 28.5 11.5T600-520q0 17-11.5 28.5T560-480H160Zm0-160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h400q17 0 28.5 11.5T600-680q0 17-11.5 28.5T560-640H160Z" />
-						</svg>
-					</button>
+			<section class="section reveal" id="stack">
+				<div class="sectionHead">
+					<h2>stack</h2>
 				</div>
+				<div class="logoloop" id="skillLoop">
+					<div class="logoloop__track" id="skillTrack"></div>
+				</div>
+			</section>
+		</div>
 
-				<div class="playerList"></div>
-			</div>
-
-			<div class="left-div left-time">
-				<ul id="line">
+		<div class="pane paneEnd">
+			<section class="section reveal" id="journey">
+				<div class="sectionHead">
+					<h2>journey</h2>
+				</div>
+				<ul id="line" class="stagger">
 					<li>
 						<span class="focus"></span>
 						<div class="tlHead">GymMane</div>
@@ -161,210 +526,52 @@
 						<time class="tlDate">2025.01.01</time>
 					</li>
 				</ul>
+			</section>
+
+			<footer>
+				<img class="signature" src="./static/img/signature.png?v=63" alt="InlitX">
+			</footer>
+		</div>
+
+		<div class="playerHost" hidden>
+			<div class="player" id="player">
+				<div class="playerTop">
+					<div class="playerCover"><span></span></div>
+					<div class="playerMeta">
+						<div class="playerTitle">&mdash;</div>
+						<div class="playerArtist">&mdash;</div>
+					</div>
+				</div>
+
+				<div class="playerSeek">
+					<div class="track">
+						<div class="fill"></div>
+						<div class="rest"></div>
+						<div class="knob"></div>
+					</div>
+				</div>
+				<div class="playerTime">
+					<span class="t-now">0:00</span>
+					<span class="t-dur">--:--</span>
+				</div>
+
+				<div class="playerControls">
+					<button type="button" class="prev" aria-label="Previous"></button>
+					<button type="button" class="play" aria-label="Play"></button>
+					<button type="button" class="next" aria-label="Next"></button>
+				</div>
+
+				<div class="playerVol">
+					<button type="button" class="mute" aria-label="Mute"></button>
+					<input type="range" min="0" max="1" step="0.01" value="0.6" aria-label="Volume">
+					<button type="button" class="listToggle" aria-label="Track list" aria-expanded="false"></button>
+				</div>
+
+				<div class="playerList"></div>
 			</div>
-
 		</div>
 
-		<div class="col-right">
-			<header>
-				<div class="index-logo" style="background-image: url(./static/img/avatar.png);">
-					<img class="logoRing" src="./static/img/ring.webp?v=47" alt="">
-				</div>
-
-				<div class="welcome">
-					<span class="welcome_p">Hello I'm</span>
-					<span class="gradientText"> InlitX </span>
-				</div>
-
-				<div class="description">
-					💻 <span class="purpleText textBackground">Programming</span> ·
-					🛠️ <span class="purpleText textBackground">Development</span> ·
-					🔒 <span class="purpleText textBackground">Hacking</span>
-				</div>
-				<div class="description">
-					💡 I turn <span class="purpleText textBackground">loose ideas</span> into
-					<span class="purpleText textBackground">things</span> I use every day.
-				</div>
-
-				<div class="iconContainer">
-					<a class="iconItem" target="_blank" rel="noopener" href="https://github.com/InlitX">
-						<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-							<path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
-						</svg>
-						<div class="iconTip">Github</div>
-					</a>
-
-					<a class="iconItem" target="_blank" rel="noopener" href="https://ko-fi.com/inlitx">
-						<svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-							<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-						</svg>
-						<div class="iconTip">Ko-fi</div>
-					</a>
-
-					<a class="iconItem tipWide" target="_blank" rel="noopener" href="https://instagram.com/InlitX">
-						<svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Z" />
-							<path fill-rule="evenodd" d="M12 6.9a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2Zm0 2a3.1 3.1 0 1 1 0 6.2 3.1 3.1 0 0 1 0-6.2Z" />
-							<circle cx="17.3" cy="6.7" r="1.25" />
-						</svg>
-						<div class="iconTip">Instagram</div>
-					</a>
-
-					<a class="iconItem" href="mailto:inlitx@proton.me">
-						<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-							<path d="M926.47619 355.644952V780.190476a73.142857 73.142857 0 0 1-73.142857 73.142857H170.666667a73.142857 73.142857 0 0 1-73.142857-73.142857V355.644952l304.103619 257.828572a170.666667 170.666667 0 0 0 220.745142 0L926.47619 355.644952zM853.333333 170.666667a74.044952 74.044952 0 0 1 26.087619 4.778666 72.704 72.704 0 0 1 30.622477 22.186667 73.508571 73.508571 0 0 1 10.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857 0 0 1-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048 0 0 1 40.155428-65.292191A72.97219 72.97219 0 0 1 170.666667 170.666667h682.666666z"></path>
-						</svg>
-						<div class="iconTip">Mail</div>
-					</a>
-
-					<a class="iconItem" target="_blank" rel="noopener" href="https://InlitX.xyz">
-						<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-							<path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m361.6 384h-146.4c-4.6-88.6-22.4-169.4-49.6-231.4 101.6 41.6 175.4 130.4 196 231.4zM512 896c-3.4 0-8.6-2.2-15.6-11.4-11-14.4-23-38.4-33.4-71.6-15.8-50.2-26.4-115.4-29.6-189h157.2c-3.2 73.6-13.8 138.8-29.6 189-10.4 33.2-22.4 57.2-33.4 71.6-7 9.2-12.2 11.4-15.6 11.4z m-78.6-320c3.2-73.6 13.8-138.8 29.6-189 10.4-33.2 22.4-57.2 33.4-71.6C503.4 306.2 508.6 304 512 304s8.6 2.2 15.6 11.4c11 14.4 23 38.4 33.4 71.6 15.8 50.2 26.4 115.4 29.6 189H433.4z m-86.8-359.4c-27.2 62-45 142.8-49.6 231.4H150.4c20.6-101 94.4-189.8 196-231.4zM150.4 576h146.6c4.6 88.6 22.4 169.4 49.6 231.4-101.6-41.6-175.4-130.4-196-231.4z m527 231.4c27.2-62 45-142.8 49.6-231.4h146.6c-20.6 101-94.4 189.8-196.2 231.4z"></path>
-						</svg>
-						<div class="iconTip">Web</div>
-					</a>
-
-					<a class="iconItem tipWide" id="xmrCopy" href="javascript:void(0)"
-						data-address="44SECMEf3rfV228kpy3Gs48wLmLXnq231gAMG7ULYoCWBWLYLHdwYV7YFkhMk31DR5P7SRAyRPyhkYaehtgEoajASz7qubq">
-						<svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-							<path d="M12 0C5.373 0 0 5.373 0 12c0 1.324.215 2.598.611 3.789h3.585V6.503L12 14.309l7.804-7.806v9.286h3.585A11.956 11.956 0 0 0 24 12c0-6.627-5.373-12-12-12m-1.629 15.937L6.735 12.3v5.472H1.807A12 12 0 0 0 12 24a12 12 0 0 0 10.193-6.23h-4.928V12.3l-3.636 3.637-1.63 1.63z"></path>
-						</svg>
-						<div class="iconTip">Monero</div>
-					</a>
-
-					<a class="switch" href="javascript:void(0)">
-						<div class="onoffswitch">
-							<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-							<label class="onoffswitch-label" for="myonoffswitch">
-								<span class="onoffswitch-inner"></span>
-								<span class="onoffswitch-switch"></span>
-							</label>
-						</div>
-					</a>
-				</div>
-
-				<div class="snake">
-					<img id="snake" src="./static/svg/snake-Light.svg?v=47" alt="">
-				</div>
-			</header>
-
-			<content>
-				<div class="title">
-					<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-						<path d="M629.333333 202.666667v213.333333h277.333334v448h-512v-213.333333h-277.333334v-448h512z m213.333334 277.333333h-213.333334v170.666667h-170.666666v149.333333h384v-320z m-277.333334-213.333333h-384v320h213.333334v-170.666667h170.666666v-149.333333z m0 213.333333h-106.666666v106.666667h106.666666v-106.666667z"></path>
-					</svg>site
-				</div>
-				<div class="projectList">
-					<a class="projectItem a" style="--proj-accent: #747bff;" target="_blank" rel="noopener" href="https://InlitX.xyz">
-						<div class="projectItemLeft">
-							<h1>Web</h1>
-							<p>Personal website</p>
-						</div>
-						<div class="projectItemRight">
-							<span class="cardIcon">
-									<svg viewBox="0 -960 960 960" aria-hidden="true">
-										<path d="M325-111.5q-73-31.5-127.5-86t-86-127.5Q80-398 80-480.5t31.5-155q31.5-72.5 86-127t127.5-86Q398-880 480.5-880t155 31.5q72.5 31.5 127 86t86 127Q880-563 880-480.5T848.5-325q-31.5 73-86 127.5t-127 86Q563-80 480.5-80T325-111.5ZM480-162q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z" />
-									</svg>
-								</span>
-						</div>
-					</a>
-
-					<a class="projectItem a" style="--proj-accent: #38bdf8;" target="_blank" rel="noopener" href="https://links.inlitx.xyz">
-						<div class="projectItemLeft">
-							<h1>Links</h1>
-							<p>My links page.</p>
-						</div>
-						<div class="projectItemRight">
-							<span class="cardIcon">
-									<svg viewBox="0 -960 960 960" aria-hidden="true">
-										<path d="M280-280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h120q17 0 28.5 11.5T440-640q0 17-11.5 28.5T400-600H280q-50 0-85 35t-35 85q0 50 35 85t85 35h120q17 0 28.5 11.5T440-320q0 17-11.5 28.5T400-280H280Zm80-160q-17 0-28.5-11.5T320-480q0-17 11.5-28.5T360-520h240q17 0 28.5 11.5T640-480q0 17-11.5 28.5T600-440H360Zm200 160q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h120q50 0 85-35t35-85q0-50-35-85t-85-35H560q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h120q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H560Z" />
-									</svg>
-								</span>
-						</div>
-					</a>
-
-				</div>
-
-				<div class="title">
-					<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-						<path d="M629.333333 202.666667v213.333333h277.333334v448h-512v-213.333333h-277.333334v-448h512z m213.333334 277.333333h-213.333334v170.666667h-170.666666v149.333333h384v-320z m-277.333334-213.333333h-384v320h213.333334v-170.666667h170.666666v-149.333333z m0 213.333333h-106.666666v106.666667h106.666666v-106.666667z"></path>
-					</svg>project
-				</div>
-				<div class="projectList">
-					<a class="projectItem b" style="--proj-accent: #a78bfa;" target="_blank" rel="noopener" href="https://obsidian.inlitx.xyz/">
-						<div class="projectItemLeft">
-							<h1>Obsidian Gallery</h1>
-							<p>Dashboard templates for Obsidian.</p>
-						</div>
-						<div class="projectItemRight">
-							<span class="cardIcon big">
-									<svg viewBox="0 -960 960 960" aria-hidden="true">
-										<path d="M200-520q-33 0-56.5-23.5T120-600v-160q0-33 23.5-56.5T200-840h160q33 0 56.5 23.5T440-760v160q0 33-23.5 56.5T360-520H200Zm0 400q-33 0-56.5-23.5T120-200v-160q0-33 23.5-56.5T200-440h160q33 0 56.5 23.5T440-360v160q0 33-23.5 56.5T360-120H200Zm400-400q-33 0-56.5-23.5T520-600v-160q0-33 23.5-56.5T600-840h160q33 0 56.5 23.5T840-760v160q0 33-23.5 56.5T760-520H600Zm0 400q-33 0-56.5-23.5T520-200v-160q0-33 23.5-56.5T600-440h160q33 0 56.5 23.5T840-360v160q0 33-23.5 56.5T760-120H600ZM200-600h160v-160H200v160Zm400 0h160v-160H600v160Zm0 400h160v-160H600v160Zm-400 0h160v-160H200v160Zm400-400Zm0 240Zm-240 0Zm0-240Z" />
-									</svg>
-								</span>
-						</div>
-					</a>
-
-					<a class="projectItem b" style="--proj-accent: #f59e0b;" target="_blank" rel="noopener" href="https://inlitx.github.io/streak/">
-						<div class="projectItemLeft">
-							<h1>streak</h1>
-							<p>Private habit tracker, no ads.</p>
-						</div>
-						<div class="projectItemRight">
-							<span class="cardIcon big">
-									<svg viewBox="0 -960 960 960" aria-hidden="true">
-										<path d="M253-173q-93-93-93-227 0-113 67-217t184-182q22-15 45.5-1.5T480-760v52q0 34 23.5 57t57.5 23q17 0 32.5-7.5T621-657q8-10 20.5-12.5T665-664q63 45 99 115t36 149q0 134-93 227T480-80q-134 0-227-93Zm-13-227q0 52 21 98.5t60 81.5q-1-5-1-9v-9q0-32 12-60t35-51l113-111 113 111q23 23 35 51t12 60v9q0 4-1 9 39-35 60-81.5t21-98.5q0-50-18.5-94.5T648-574q-20 13-42 19.5t-45 6.5q-62 0-107.5-41T401-690q-78 66-119.5 140.5T240-400Zm240 52-57 56q-11 11-17 25t-6 29q0 32 23.5 55t56.5 23q33 0 56.5-23t23.5-55q0-16-6-29.5T537-292l-57-56Z" />
-									</svg>
-								</span>
-						</div>
-					</a>
-
-					<a class="projectItem b" style="--proj-accent: #fb7185;" target="_blank" rel="noopener" href="https://inlitx.github.io/GymMane/">
-						<div class="projectItemLeft">
-							<h1>GymMane</h1>
-							<p>Offline gym tracker for Android.</p>
-						</div>
-						<div class="projectItemRight">
-							<span class="cardIcon">
-									<svg viewBox="0 -960 960 960" aria-hidden="true">
-										<path d="M282-622 168-508q-11 11-27.5 11.5T112-508q-11-11-11.5-27.5T111-564l29-30-28-28q-12-12-12-28t12-28l56-56-29-30q-11-11-11-27.5t12-28.5q11-11 27.5-11.5T196-821l30 29 56-56q12-12 28-12t28 12l28 28 30-29q11-11 27.5-11t28.5 12q11 11 11 28t-11 28L338-678l340 340 114-114q11-11 27.5-11.5T848-452q11 11 11.5 27.5T849-396l-29 30 28 28q12 12 12 28t-12 28l-56 56 29 30q11 11 11 27.5T820-140q-11 11-27.5 11.5T764-139l-30-29-56 56q-12 12-28 12t-28-12l-28-28-30 29q-11 11-27.5 11T508-112q-11-11-11-28t11-28l114-114-340-340Z" />
-									</svg>
-								</span>
-						</div>
-					</a>
-
-					<a class="projectItem b" style="--proj-accent: #34d399;" target="_blank" rel="noopener" href="https://github.com/InlitX/Skipix">
-						<div class="projectItemLeft">
-							<h1>Skipix</h1>
-							<p>Skips Netflix ads.</p>
-						</div>
-						<div class="projectItemRight">
-							<span class="cardIcon">
-									<svg viewBox="0 -960 960 960" aria-hidden="true">
-										<path d="M660-280v-400q0-17 11.5-28.5T700-720q17 0 28.5 11.5T740-680v400q0 17-11.5 28.5T700-240q-17 0-28.5-11.5T660-280Zm-440-35v-330q0-18 12-29t28-11q5 0 11 1t11 5l248 166q9 6 13.5 14.5T548-480q0 10-4.5 18.5T530-447L282-281q-5 4-11 5t-11 1q-16 0-28-11t-12-29Zm80-165Zm0 90 136-90-136-90v180Z" />
-									</svg>
-								</span>
-						</div>
-					</a>
-				</div>
-
-				<div class="title">
-					<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-						<path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333zM416.714667 138.666667L270.453333 522.581333h166.869334a32 32 0 0 1 30.933333 40.181334l-61.130667 230.954666 322.176-367.114666H565.312c-22.72 0-38.208-23.018667-29.632-44.064l99.36-243.882667H416.714667z"></path>
-					</svg>
-					skills
-				</div>
-				<div class="skill">
-					<div class="skillGrid" id="skillGrid"></div>
-				</div>
-			</content>
-		</div>
-	</div>
-
-	<footer>
-		InlitX © 2026 |
-		<a target="_blank" rel="noopener" href="https://InlitX.xyz">InlitX.xyz</a>
-	</footer>
+	</main>
 
 	<div class="tc">
 		<div class="tc-main">
@@ -372,11 +579,11 @@
 		</div>
 	</div>
 
-	<script src="./static/js/shapes-data.js?v=47"></script>
-	<script src="./static/js/morph.js?v=47"></script>
-	<script src="./static/js/script.js?v=49"></script>
-	<script src="./static/js/skills.js?v=47"></script>
-	<script src="./static/js/player.js?v=47"></script>
+	<script src="./static/js/shapes-data.js?v=63"></script>
+	<script src="./static/js/morph.js?v=63"></script>
+	<script src="./static/js/script.js?v=63"></script>
+	<script src="./static/js/skills.js?v=63"></script>
+	<script src="./static/js/player.js?v=63"></script>
 </body>
 
 </html>

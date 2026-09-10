@@ -1,62 +1,62 @@
 .player {
-	flex-shrink: 0;
-	width: 100%;
-	margin-top: 15px;
-	padding: 16px;
-	background: var(--item_bg_color);
-	backdrop-filter: blur(var(--card_filter));
-	-webkit-backdrop-filter: blur(var(--card_filter));
-	position: relative;
-	overflow: hidden;
-	--pl-line: color-mix(in srgb, var(--main_text_color) 18%, transparent);
-	--pl-state: color-mix(in srgb, var(--main_text_color) 8%, transparent);
+	--pl-accent: var(--accent);
+	--pl-p: 0%;
+	padding: 1rem 1.1rem;
+	border-radius: var(--r-lg);
+	border: 1px solid var(--border);
+	background: var(--card);
+	transition: border-color var(--norm) var(--ease);
 }
-.player::before {
-	content: "";
-	position: absolute;
-	inset: -50% -20% auto -20%;
-	height: 140px;
-	background: var(--pl-accent, #747bff);
-	filter: blur(52px);
-	opacity: 0.16;
-	pointer-events: none;
-	transition: background var(--m3-slow-dur) var(--m3-slow);
+
+.player.playing {
+	border-color: color-mix(in srgb, var(--pl-accent) 45%, var(--border));
 }
 
 .playerTop {
 	display: flex;
-	gap: 12px;
 	align-items: center;
-	position: relative;
+	gap: 0.8rem;
+	margin-bottom: 0.9rem;
 }
 
 .playerCover {
 	position: relative;
-	width: 46px;
-	height: 46px;
+	width: 3rem;
+	height: 3rem;
 	flex-shrink: 0;
-	animation: coverSpin 14s linear infinite;
-	animation-play-state: paused;
 }
 
 .playerCover span {
-	position: absolute;
-	inset: 0;
-	background-color: var(--pl-accent, #747bff);
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: var(--r-md);
 	clip-path: var(--morph-clip);
-	transition: background-color var(--m3-slow-dur) var(--m3-slow);
+	background-size: cover;
+	background-position: center;
+	background-color: var(--bg-soft);
+	box-shadow: 0 0 0 1px var(--border) inset;
 }
 
-.player.playing .playerCover {
-	animation-play-state: running;
+.player.playing .playerCover::after {
+	content: "";
+	position: absolute;
+	inset: -4px;
+	border-radius: var(--r-lg);
+	border: 1px solid color-mix(in srgb, var(--pl-accent) 55%, transparent);
+	animation: pulse 2.2s var(--ease-out) infinite;
+	pointer-events: none;
 }
 
-@keyframes coverSpin {
-	to {
-		transform: rotate(360deg);
+@keyframes pulse {
+	0% {
+		opacity: 0.9;
+		transform: scale(0.96);
+	}
+	70%,
+	100% {
+		opacity: 0;
+		transform: scale(1.12);
 	}
 }
 
@@ -67,424 +67,311 @@
 
 .playerTitle {
 	font-size: 13px;
-	font-weight: 800;
-	line-height: 1.3;
-	color: var(--main_text_color);
-	white-space: nowrap;
+	font-weight: 500;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .playerArtist {
-	font-size: 11px;
-	margin-top: 2px;
-	opacity: 0.6;
-	color: var(--item_left_text_color);
-	white-space: nowrap;
+	font-size: 11.5px;
+	color: var(--fg-dim);
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .playerSeek {
-	--pl-wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16'%3E%3Cpath d='M0 8 q 3 -5 6 0 t 6 0 t 6 0 t 6 0' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
-	position: relative;
-	height: 22px;
-	margin-top: 14px;
-	padding: 0 3px;
-	display: flex;
-	align-items: center;
+	padding: 0.5rem 0;
 	cursor: pointer;
 	touch-action: none;
 }
 
 .playerSeek .track {
-	width: 100%;
-	height: 16px;
 	position: relative;
+	height: 3px;
+	border-radius: var(--r-full);
+	background: var(--border);
 }
 
 .playerSeek .fill {
 	position: absolute;
-	left: 0;
-	top: 50%;
-	width: var(--pl-p, 0%);
-	height: 16px;
-	box-sizing: border-box;
-	border-right: 5px solid transparent;
-	transform: translateY(-50%);
-	background: var(--pl-accent, #747bff);
-	background-clip: padding-box;
-	-webkit-mask-image: var(--pl-wave);
-	mask-image: var(--pl-wave);
-	-webkit-mask-repeat: repeat-x;
-	mask-repeat: repeat-x;
-	-webkit-mask-size: 24px 16px;
-	mask-size: 24px 16px;
-	-webkit-mask-position: 0 50%;
-	mask-position: 0 50%;
-	transition: background-color var(--m3-slow-dur) var(--m3-slow);
-}
-
-.player.playing .playerSeek .fill {
-	animation: plWave 1.05s linear infinite;
-}
-
-@keyframes plWave {
-	to {
-		-webkit-mask-position: -24px 50%;
-		mask-position: -24px 50%;
-	}
+	inset: 0 auto 0 0;
+	width: var(--pl-p);
+	border-radius: var(--r-full);
+	background: var(--pl-accent);
 }
 
 .playerSeek .rest {
-	position: absolute;
-	left: var(--pl-p, 0%);
-	right: 0;
-	top: 50%;
-	height: 4px;
-	margin-left: 5px;
-	transform: translateY(-50%);
-	border-radius: var(--m3-r-full);
-	background: var(--pl-line);
+	display: none;
 }
 
 .playerSeek .knob {
 	position: absolute;
 	top: 50%;
-	left: var(--pl-p, 0%);
-	width: 4px;
-	height: 16px;
-	border-radius: var(--m3-r-full);
-	background: var(--pl-accent, #747bff);
-	transform: translate(-50%, -50%);
-	transition:
-		height var(--m3-fast-dur) var(--m3-fast),
-		background-color var(--m3-slow-dur) var(--m3-slow);
-}
-.playerSeek:hover .knob,
-.playerSeek:active .knob {
-	height: 22px;
+	left: var(--pl-p);
+	width: 9px;
+	height: 9px;
+	margin-left: -4.5px;
+	border-radius: 50%;
+	background: var(--pl-accent);
+	transform: translateY(-50%) scale(0);
+	transition: transform var(--fast) var(--ease);
 }
 
-@media (prefers-reduced-motion: reduce) {
-	.player.playing .playerSeek .fill {
-		animation: none;
-	}
+.playerSeek:hover .knob,
+.player.playing .knob {
+	transform: translateY(-50%) scale(1);
 }
 
 .playerTime {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 2px;
 	font-size: 10px;
-	font-variant-numeric: tabular-nums;
-	opacity: 0.5;
-	color: var(--item_left_text_color);
+	color: var(--fg-dim);
+	margin-bottom: 0.55rem;
 }
 
 .playerControls {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 10px;
-	margin-top: 12px;
+	gap: 0.6rem;
+	margin-bottom: 0.7rem;
 }
 
-.playerControls button,
-.playerVol button {
-	border: none;
-	background: transparent;
-	color: var(--main_text_color);
+.playerControls button {
 	display: grid;
 	place-items: center;
-	cursor: pointer;
-	transition:
-		background-color var(--m3-effects-dur) var(--m3-effects),
-		border-radius var(--m3-fast-dur) var(--m3-fast),
-		transform var(--m3-fast-dur) var(--m3-fast);
+	width: 2rem;
+	height: 2rem;
+	border-radius: var(--r-full);
+	color: var(--fg-muted);
+	transition: color var(--fast) var(--ease), background-color var(--fast) var(--ease), transform var(--fast) var(--ease);
 }
 
-.playerControls .prev,
-.playerControls .next {
-	width: 38px;
-	height: 38px;
-	border-radius: var(--m3-r-full);
+.playerControls button:hover {
+	color: var(--fg);
+	background: var(--card-hover);
 }
 
-.playerControls .prev:hover,
-.playerControls .next:hover,
-.playerVol button:hover {
-	background: var(--pl-state);
+.playerControls button:active {
+	transform: scale(0.9);
 }
 
-.playerControls .prev:active,
-.playerControls .next:active {
-	border-radius: var(--m3-r-s);
-	transform: scale(0.88);
-}
-
-.playerControls .play {
-	width: 68px;
-	height: 40px;
-	border-radius: var(--m3-r-full);
-	background: var(--pl-accent, #747bff);
-	color: #fff;
-	box-shadow: 0 10px 22px -12px var(--pl-accent, #747bff);
-	transition:
-		border-radius var(--m3-spatial-dur) var(--m3-spatial),
-		background-color var(--m3-slow-dur) var(--m3-slow),
-		transform var(--m3-fast-dur) var(--m3-fast);
-}
-
-.player.playing .playerControls .play {
-	border-radius: var(--m3-r-m);
-}
-
-.playerControls .play:active {
-	border-radius: var(--m3-r-xs);
-	transform: scale(0.94);
-}
-
-.playerControls svg {
-	width: 20px;
-	height: 20px;
+.playerControls button svg {
+	width: 1.15rem;
+	height: 1.15rem;
 	fill: currentColor;
 }
 
+.playerControls .play {
+	width: 2.4rem;
+	height: 2.4rem;
+	background: var(--fg);
+	color: var(--bg);
+}
+
+.playerControls .play:hover {
+	background: var(--fg);
+	opacity: 0.85;
+}
+
 .playerControls .play svg {
-	width: 22px;
-	height: 22px;
+	width: 1.35rem;
+	height: 1.35rem;
 }
 
 .playerVol {
 	display: flex;
 	align-items: center;
-	gap: 8px;
-	margin-top: 14px;
-	color: var(--item_left_text_color);
+	gap: 0.6rem;
 }
 
 .playerVol button {
-	width: 30px;
-	height: 30px;
-	flex-shrink: 0;
-	border-radius: var(--m3-r-s);
-	color: inherit;
+	display: grid;
+	place-items: center;
+	width: 1.75rem;
+	height: 1.75rem;
+	border-radius: var(--r-sm);
+	color: var(--fg-dim);
+	transition: color var(--fast) var(--ease);
 }
 
-.playerVol button:active {
-	transform: scale(0.88);
+.playerVol button:hover {
+	color: var(--fg);
 }
 
-.playerVol svg {
-	width: 16px;
-	height: 16px;
+.playerVol button svg {
+	width: 1rem;
+	height: 1rem;
 	fill: currentColor;
 }
 
-.player.muted .playerVol .mute {
-	color: var(--pl-accent, #747bff);
-}
-
-.playerVol .listToggle {
-	border-radius: var(--m3-r-s);
-	transition:
-		background-color var(--m3-effects-dur) var(--m3-effects),
-		border-radius var(--m3-spatial-dur) var(--m3-spatial),
-		color var(--m3-effects-dur) var(--m3-effects),
-		transform var(--m3-spatial-dur) var(--m3-spatial);
-}
-
-.player.open .playerVol .listToggle {
-	background: var(--m3-accent-soft);
-	border-radius: var(--m3-r-full);
-	color: var(--pl-accent, #747bff);
+.player.muted .mute {
+	opacity: 0.55;
 }
 
 .playerVol input {
 	flex: 1;
-	min-width: 0;
-	height: 16px;
-	background: transparent;
-	cursor: pointer;
-	-webkit-appearance: none;
+	height: 3px;
 	appearance: none;
-}
-
-.playerVol input::-webkit-slider-runnable-track {
-	height: 4px;
-	border-radius: var(--m3-r-full);
-	background: var(--pl-line);
+	-webkit-appearance: none;
+	background: var(--border);
+	border-radius: var(--r-full);
+	cursor: pointer;
 }
 
 .playerVol input::-webkit-slider-thumb {
 	-webkit-appearance: none;
-	width: 4px;
-	height: 14px;
-	margin-top: -5px;
-	border: none;
-	border-radius: var(--m3-r-full);
-	background: var(--pl-accent, #747bff);
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--fg-muted);
+	transition: background-color var(--fast) var(--ease);
 }
 
-.playerVol input::-moz-range-track {
-	height: 4px;
-	border-radius: var(--m3-r-full);
-	background: var(--pl-line);
+.playerVol input:hover::-webkit-slider-thumb {
+	background: var(--fg);
 }
 
 .playerVol input::-moz-range-thumb {
-	width: 4px;
-	height: 14px;
+	width: 10px;
+	height: 10px;
 	border: none;
-	border-radius: var(--m3-r-full);
-	background: var(--pl-accent, #747bff);
+	border-radius: 50%;
+	background: var(--fg-muted);
+}
+
+.listToggle svg {
+	transition: transform var(--norm) var(--ease);
+}
+
+.player.open .listToggle svg {
+	transform: rotate(180deg);
 }
 
 .playerList {
 	display: grid;
 	grid-template-rows: 0fr;
-	opacity: 0;
-	overflow: hidden;
-	transition:
-		grid-template-rows var(--m3-spatial-dur) var(--m3-spatial),
-		opacity var(--m3-effects-dur) var(--m3-effects),
-		margin-top var(--m3-spatial-dur) var(--m3-spatial);
+	transition: grid-template-rows var(--slow) var(--ease);
 }
 
 .player.open .playerList {
 	grid-template-rows: 1fr;
-	opacity: 1;
-	margin-top: 12px;
 }
 
 .playerListInner {
+	overflow: hidden;
 	min-height: 0;
-	display: grid;
-	gap: 2px;
-	padding-top: 12px;
-	border-top: 1px solid var(--pl-line);
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+}
+
+.player.open .playerListInner {
+	margin-top: 0.8rem;
+	padding-top: 0.8rem;
+	border-top: 1px solid var(--border);
 }
 
 .playerList button {
-	display: grid;
-	grid-template-columns: 28px 1fr;
-	gap: 10px;
+	display: flex;
 	align-items: center;
-	width: 100%;
-	padding: 7px 10px;
-	border: none;
-	border-radius: var(--m3-r-m);
-	background: transparent;
-	color: var(--item_left_text_color);
-	font-family: inherit;
+	gap: 0.65rem;
+	padding: 0.35rem 0.4rem;
+	border-radius: var(--r-sm);
 	text-align: left;
-	cursor: pointer;
-	transition:
-		background-color var(--m3-effects-dur) var(--m3-effects),
-		border-radius var(--m3-fast-dur) var(--m3-fast);
+	transition: background-color var(--fast) var(--ease);
 }
 
 .playerList button:hover {
-	background: var(--pl-state);
-}
-
-.playerList button:active {
-	border-radius: var(--m3-r-xs);
+	background: var(--card-hover);
 }
 
 .playerList button.current {
-	background: var(--m3-accent-soft);
+	background: color-mix(in srgb, var(--pl-accent) 12%, transparent);
 }
 
 .playerList .th {
 	position: relative;
-	width: 28px;
-	height: 28px;
-	border-radius: var(--m3-r-xs);
-	overflow: hidden;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.playerList .tx {
-	min-width: 0;
 	display: grid;
-}
-
-.playerList .t {
-	font-size: 11.5px;
-	line-height: 1.3;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	opacity: 0.75;
-}
-
-.playerList .a {
-	font-size: 10px;
-	line-height: 1.3;
-	opacity: 0.45;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.playerList button.current .t {
-	color: var(--main_text_color);
-	opacity: 1;
+	place-items: center;
+	width: 1.85rem;
+	height: 1.85rem;
+	flex-shrink: 0;
+	border-radius: var(--r-xs);
+	background-size: cover;
+	background-position: center;
+	background-color: var(--bg-soft);
+	box-shadow: 0 0 0 1px var(--border) inset;
 }
 
 .playerList .eq {
-	position: absolute;
-	inset: 0;
 	display: none;
 	align-items: flex-end;
-	justify-content: center;
 	gap: 2px;
-	padding-bottom: 8px;
+	height: 11px;
+	padding: 2px;
+	border-radius: var(--r-xs);
 	background: rgba(0, 0, 0, 0.55);
 }
 
-.playerList button.current .eq {
+.player.playing button.current .eq {
 	display: flex;
 }
 
 .playerList .eq s {
+	display: block;
 	width: 2px;
-	height: 3px;
-	border-radius: var(--m3-r-full);
-	background: var(--pl-accent, #747bff);
-}
-
-.player.playing .playerList button.current .eq s {
-	animation: plEq 0.9s ease-in-out infinite;
+	height: 100%;
+	background: #fff;
+	transform-origin: bottom;
+	animation: eq 0.9s var(--ease-out) infinite alternate;
 }
 
 .playerList .eq s:nth-child(2) {
-	animation-delay: 0.18s;
+	animation-delay: 0.25s;
 }
 
 .playerList .eq s:nth-child(3) {
-	animation-delay: 0.36s;
+	animation-delay: 0.5s;
 }
 
-@keyframes plEq {
-	0%,
-	100% {
-		height: 3px;
+@keyframes eq {
+	from {
+		transform: scaleY(0.25);
 	}
+	to {
+		transform: scaleY(1);
+	}
+}
 
-	50% {
-		height: 12px;
-	}
+.playerList .tx {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	line-height: 1.35;
+}
+
+.playerList .t {
+	font-size: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.playerList .a {
+	font-size: 10.5px;
+	color: var(--fg-dim);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.player.playing .playerCover,
-	.player.playing .playerSeek .fill,
-	.player.playing .playerList button.current .eq s {
+	.playerList .eq s,
+	.player.playing .playerCover::after {
 		animation: none;
 	}
 }

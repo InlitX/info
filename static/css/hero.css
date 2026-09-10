@@ -1,0 +1,537 @@
+.hero {
+	position: relative;
+}
+
+.heroTop {
+	display: flex;
+	align-items: center;
+	gap: 1.15rem;
+	margin-bottom: 1.75rem;
+}
+
+.logo {
+	position: relative;
+	flex-shrink: 0;
+	width: 5.75rem;
+	height: 5.75rem;
+}
+
+.logoShape {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	clip-path: var(--morph-clip);
+	border-radius: var(--r-lg);
+	transition: transform var(--norm) var(--ease);
+}
+
+.logo:hover .logoShape {
+	transform: scale(1.04);
+}
+
+.heroIdent {
+	flex: 1;
+	min-width: 0;
+}
+
+.heroName {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	flex-wrap: wrap;
+}
+
+.heroName h1 {
+	font-family: "display", "mono", ui-monospace, sans-serif;
+	font-size: 2.75rem;
+	font-weight: 400;
+	letter-spacing: -0.01em;
+	line-height: 1.05;
+	color: var(--fg);
+}
+
+.heroRole {
+	margin-top: 0.2rem;
+	font-size: 13px;
+	color: var(--fg-muted);
+}
+
+.metaGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.45rem 1.5rem;
+	margin-bottom: 1.75rem;
+}
+
+.metaItem {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	min-width: 0;
+}
+
+.metaIcon {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: var(--r-sm);
+	border: 1px solid var(--border);
+	background: var(--card);
+}
+
+.metaIcon svg {
+	width: 0.85rem;
+	height: 0.85rem;
+	fill: var(--fg-dim);
+}
+
+.metaItem span,
+.metaItem a {
+	font-size: 12.5px;
+	color: var(--fg-muted);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.metaItem a:hover {
+	color: var(--fg);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.heroProse {
+	margin-bottom: 1.75rem;
+	font-size: 13.5px;
+	line-height: 2.15;
+	color: var(--fg-muted);
+}
+
+.heroProse strong {
+	font-weight: 500;
+	color: var(--fg);
+}
+
+.tag {
+	position: relative;
+	z-index: 0;
+	display: inline-block;
+	font-weight: 500;
+	color: var(--t-fg, var(--fg));
+	white-space: nowrap;
+	transition: text-shadow var(--norm) var(--ease);
+}
+
+.tag:hover {
+	text-shadow: 0 0 18px color-mix(in srgb, var(--t-fg, var(--fg)) 45%, transparent);
+}
+
+.tagWord {
+	position: relative;
+	z-index: 1;
+}
+
+.tagGlyph {
+	position: absolute;
+	left: 50%;
+	bottom: 0.15em;
+	z-index: -1;
+	display: block;
+	width: 0.8rem;
+	height: 0.8rem;
+	opacity: 0;
+	pointer-events: none;
+	transform: translate(-50%, 0) rotate(0deg);
+	transform-origin: 50% 100%;
+	transition:
+		width var(--slow) var(--ease),
+		height var(--slow) var(--ease),
+		transform var(--slow) var(--ease),
+		opacity var(--fast) var(--ease);
+}
+
+.tag:hover .tagGlyph,
+.tag:focus-visible .tagGlyph {
+	width: 2rem;
+	height: 2rem;
+	opacity: 1;
+	transform: translate(-50%, -0.8em) rotate(var(--t-rot, -7deg));
+}
+
+.tagGlyph img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.heroActions {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.ctaNudge {
+	position: absolute;
+	top: 50%;
+	right: calc(100% + 4rem);
+	width: 11rem;
+	height: auto;
+	opacity: 0.8;
+	user-select: none;
+	transform: translateY(-62%);
+	filter: invert(var(--invert-light)) drop-shadow(0 2px 7px rgba(0, 0, 0, 0.55));
+	transition: opacity var(--norm) var(--ease), transform var(--norm) var(--ease);
+}
+
+.ctaNudge:hover {
+	opacity: 1;
+	transform: translateY(-62%) scale(1.04);
+}
+
+.heroActions:has(.btnProjects:hover) .ctaNudge {
+	opacity: 1;
+	transform: translateY(-62%) scale(1.04);
+}
+
+@media (max-width: 1240px) {
+	.ctaNudge {
+		position: static;
+		width: 9.5rem;
+		flex-shrink: 0;
+		margin-right: -0.15rem;
+		transform: translateY(-0.9rem);
+	}
+
+	.ctaNudge:hover {
+		transform: translateY(-0.9rem) scale(1.03);
+	}
+
+	.heroActions:has(.btnProjects:hover) .ctaNudge {
+		transform: translateY(-0.9rem) scale(1.03);
+	}
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	height: 2.25rem;
+	padding: 0 0.8rem;
+	border-radius: var(--r-md);
+	border: 1px solid transparent;
+	background: var(--fg);
+	color: var(--bg);
+	font-size: 12.5px;
+	font-weight: 500;
+	transition:
+		opacity var(--fast) var(--ease),
+		transform var(--fast) var(--ease),
+		background-color var(--fast) var(--ease),
+		border-color var(--fast) var(--ease);
+}
+
+.btn:hover {
+	opacity: 0.85;
+}
+
+.btn:active {
+	transform: scale(0.97);
+}
+
+.btn svg {
+	width: 0.95rem;
+	height: 0.95rem;
+	fill: currentColor;
+}
+
+.btn.ghost {
+	background: var(--card);
+	color: var(--fg-muted);
+	border-color: var(--border);
+}
+
+.btn.ghost:hover {
+	opacity: 1;
+	color: var(--fg);
+	background: var(--card-hover);
+	border-color: var(--border-strong);
+}
+
+.heroSocials {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	flex: 1;
+}
+
+.vSep {
+	width: 1px;
+	height: 1.25rem;
+	margin: 0 0.25rem;
+	background: var(--border);
+}
+
+.iconBtn .tip {
+	position: absolute;
+	bottom: calc(100% + 8px);
+	left: 50%;
+	transform: translate(-50%, 5px) scale(0.9);
+	padding: 0.25rem 0.5rem;
+	border-radius: var(--r-xs);
+	border: 1px solid var(--border);
+	background: var(--bg-soft);
+	color: var(--fg);
+	font-size: 10.5px;
+	white-space: nowrap;
+	opacity: 0;
+	pointer-events: none;
+	z-index: 20;
+	box-shadow: 0 8px 20px -12px rgba(0, 0, 0, 0.6);
+	transition: opacity var(--fast) var(--ease), transform var(--norm) var(--ease);
+}
+
+.iconBtn {
+	position: relative;
+}
+
+.iconBtn:hover .tip {
+	opacity: 1;
+	transform: translate(-50%, 0) scale(1);
+}
+
+#xmrCopy.copied {
+	color: var(--ok);
+	border-color: var(--ok);
+}
+
+.vinylStack {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.15rem;
+	margin-left: auto;
+	margin-right: 0.9rem;
+}
+
+.vinyl {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.25rem;
+	border: none;
+	background: none;
+	overflow: visible;
+	border-radius: var(--r-full);
+	transition: transform 200ms var(--ease-out);
+}
+
+.vinyl:hover {
+	transform: scale(1.05);
+}
+
+.vinyl:active {
+	transform: scale(0.95);
+}
+
+.vinylDisk {
+	width: 2.75rem;
+	height: 2.25rem;
+	overflow: visible;
+	filter: invert(var(--invert-dark));
+}
+
+.vinylPlate {
+	transform-box: view-box;
+	transform-origin: 127.677px 126.56px;
+}
+
+body.audioOn .vinylPlate {
+	animation: vinylSpin 3s linear infinite;
+}
+
+@keyframes vinylSpin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.vinylArm {
+	transform-box: view-box;
+	transform-origin: 276px 46px;
+	transform: rotate(-45deg);
+	transition: transform 300ms ease;
+}
+
+body.audioOn .vinylArm {
+	transform: rotate(0deg);
+}
+
+.vinylList {
+	display: grid;
+	place-items: center;
+	width: 1.6rem;
+	height: 1.25rem;
+	margin-right: 0.4rem;
+	border: none;
+	background: none;
+	color: var(--fg-dim);
+	cursor: pointer;
+	transition: color var(--fast) var(--ease), transform var(--fast) var(--ease);
+}
+
+.vinylList svg {
+	width: 1rem;
+	height: 1rem;
+	fill: currentColor;
+}
+
+.vinylList:hover {
+	color: var(--fg);
+}
+
+.vinylStack.open .vinylList {
+	color: var(--fg);
+	transform: translateY(1px);
+}
+
+.miniList {
+	position: absolute;
+	top: calc(100% + 0.45rem);
+	right: -0.5rem;
+	z-index: 40;
+	width: 13.5rem;
+	padding: 0.3rem;
+	border-radius: var(--r-lg);
+	border: 1px solid var(--border);
+	background: var(--bg-soft);
+	box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.65);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-6px) scale(0.97);
+	transform-origin: top right;
+	transition:
+		opacity var(--fast) var(--ease),
+		transform var(--norm) var(--ease),
+		visibility 0s linear var(--norm);
+}
+
+.vinylStack.open .miniList {
+	opacity: 1;
+	visibility: visible;
+	transform: none;
+	transition-delay: 0s;
+}
+
+.miniList button {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	width: 100%;
+	padding: 0.3rem 0.35rem;
+	border: none;
+	border-radius: var(--r-sm);
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+	transition: background-color var(--fast) var(--ease);
+}
+
+.miniList button:hover {
+	background: var(--card-hover);
+}
+
+.miniList button.current {
+	background: var(--card-hover);
+	color: var(--fg);
+}
+
+.miniList .th {
+	width: 1.6rem;
+	height: 1.6rem;
+	flex-shrink: 0;
+	border-radius: var(--r-xs);
+	background-size: cover;
+	background-position: center;
+	background-color: var(--muted);
+	box-shadow: 0 0 0 1px var(--border) inset;
+}
+
+.miniList .t {
+	flex: 1;
+	min-width: 0;
+	font-size: 11.5px;
+	color: var(--fg-muted);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.miniList button.current .t {
+	color: var(--fg);
+}
+
+@media (max-width: 640px) {
+	.metaGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.heroName h1 {
+		font-size: 2.2rem;
+	}
+
+	.logo {
+		width: 4.5rem;
+		height: 4.5rem;
+	}
+
+	.heroProse {
+		line-height: 2;
+	}
+
+	.heroSocials {
+		flex: 1 0 100%;
+		margin-top: 0.35rem;
+	}
+
+	.vSep {
+		display: none;
+	}
+
+	.ctaNudge {
+		width: 8rem;
+		transform: translateY(-0.75rem);
+	}
+
+	.ctaNudge:hover,
+	.heroActions:has(.btnProjects:hover) .ctaNudge {
+		transform: translateY(-0.75rem) scale(1.03);
+	}
+
+	.miniList {
+		width: 12rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.vinylDisk {
+		animation: none;
+	}
+
+	.tagGlyph,
+	.ctaNudge {
+		transition: none;
+	}
+}

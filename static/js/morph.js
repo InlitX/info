@@ -62,9 +62,4 @@
 		new MutationObserver(syncPlaying).observe(playerRoot, { attributes: true, attributeFilter: ["class"] });
 		syncPlaying();
 	}
-
-	var CARD_SHAPES = ["cookie4", "cookie7", "clover", "sunny", "burst", "gem"];
-	document.querySelectorAll(".cardIcon").forEach(function (el, i) {
-		attach(el.closest(".projectItem"), el, CARD_SHAPES[i % CARD_SHAPES.length]);
-	});
 })();

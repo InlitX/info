@@ -12,19 +12,11 @@ const LEVELS = [
 	"FOURTH_QUARTILE",
 ];
 
-const PALETTES = {
-	Light: {
-		colorDotBorder: "#1b1f230a",
-		colorDots: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-		colorEmpty: "#ebedf0",
-		colorSnake: "purple",
-	},
-	Dark: {
-		colorDotBorder: "#1b1f230a",
-		colorDots: ["#161b22", "#01311f", "#034525", "#0f6d31", "#00c647"],
-		colorEmpty: "#161b22",
-		colorSnake: "purple",
-	},
+const PALETTE = {
+	colorDotBorder: "transparent",
+	colorDots: ["#1a1a1c", "#35353a", "#5c5c63", "#8b8b93", "#bcbcc4"],
+	colorEmpty: "#1a1a1c",
+	colorSnake: "#ffffff",
 };
 
 const SIZES = { sizeDotBorderRadius: 2, sizeCell: 16, sizeDot: 12 };
@@ -93,14 +85,9 @@ globalThis.fetch = async (url, init) =>
 
 const { generateSnakeAnimation } = await import("generate-snake-animation");
 
-const themes = Object.keys(PALETTES);
 const results = await generateSnakeAnimation(
 	{ platform: "github", username: USER, githubToken: "unused" },
-	themes.map((name) => ({
-		format: "svg",
-		drawOptions: { ...SIZES, ...PALETTES[name] },
-		animationOptions: ANIMATION,
-	})),
+	[{ format: "svg", drawOptions: { ...SIZES, ...PALETTE }, animationOptions: ANIMATION }],
 );
 
 const outDir = path.join(
@@ -111,12 +98,9 @@ const outDir = path.join(
 );
 fs.mkdirSync(outDir, { recursive: true });
 
-themes.forEach((name, i) => {
-	const svg = results[i].replace(/<desc>[\s\S]*?<\/desc>/g, "");
-	const dest = path.join(outDir, `snake-${name}.svg`);
-	fs.writeFileSync(dest, svg);
-	console.log(`static/svg/snake-${name}.svg  ${(svg.length / 1024).toFixed(1)} KB`);
-});
+const svg = results[0].replace(/<desc>[\s\S]*?<\/desc>/g, "");
+fs.writeFileSync(path.join(outDir, "snake.svg"), svg);
+console.log(`static/svg/snake.svg  ${(svg.length / 1024).toFixed(1)} KB`);
 
 const active = [...counts.values()].filter((c) => c > 0).length;
 console.log(`${USER}: ${weeks.filter(Boolean).length} weeks, ${days} days, ${active} active`);

@@ -65,6 +65,7 @@ const PLAYLIST = [
 		prev: root.querySelector(".prev"),
 		next: root.querySelector(".next"),
 		list: root.querySelector(".playerList"),
+		mini: document.getElementById("miniList"),
 		toggle: root.querySelector(".listToggle"),
 		mute: root.querySelector(".mute"),
 		vol: root.querySelector(".playerVol input")
@@ -99,9 +100,23 @@ const PLAYLIST = [
 				'<span class="a">' + t.artist + "</span></span></button>";
 		}).join("") + "</div>";
 
-		el.list.querySelectorAll("button").forEach(function (b) {
+		if (el.mini) {
+			el.mini.innerHTML = PLAYLIST.map(function (t, i) {
+				return '<button type="button" data-i="' + i + '">' +
+					'<i class="th" style="background-image:url(' + t.cover + ')"></i>' +
+					'<span class="t">' + t.title + "</span></button>";
+			}).join("");
+		}
+
+		buttons().forEach(function (b) {
 			b.addEventListener("click", function () { load(Number(b.dataset.i), true); });
 		});
+	}
+
+	function buttons() {
+		const all = Array.prototype.slice.call(el.list.querySelectorAll("button"));
+		if (el.mini) Array.prototype.push.apply(all, el.mini.querySelectorAll("button"));
+		return all;
 	}
 
 	function load(i, autoplay) {
@@ -119,8 +134,8 @@ const PLAYLIST = [
 		el.now.textContent = "0:00";
 		el.dur.textContent = "--:--";
 
-		el.list.querySelectorAll("button").forEach(function (b, n) {
-			b.classList.toggle("current", n === index);
+		buttons().forEach(function (b) {
+			b.classList.toggle("current", Number(b.dataset.i) === index);
 		});
 
 		if (autoplay) audio.play().catch(function () { });
