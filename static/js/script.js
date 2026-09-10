@@ -1,4 +1,4 @@
-const ASSET_VERSION = 63;
+const ASSET_VERSION = 65;
 
 function setCookie(name, value, days) {
 	let expires = "";

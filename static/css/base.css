@@ -96,6 +96,7 @@ html[data-theme="Dark"] {
 html {
 	scroll-behavior: smooth;
 	-webkit-text-size-adjust: 100%;
+	overflow-x: clip;
 }
 
 body {
@@ -107,7 +108,7 @@ body {
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	overflow-x: hidden;
+	overflow-x: clip;
 	position: relative;
 	transition: background-color var(--norm) var(--ease-out), color var(--norm) var(--ease-out);
 }
@@ -200,28 +201,37 @@ svg {
 html[data-theme="Light"] .pane::before {
 	content: "";
 	position: absolute;
-	inset: -1.5rem -6.5rem;
+	--frost-bleed: 6.5rem;
+	--frost-fade: 7.5rem;
+	inset: -1.5rem calc(var(--frost-bleed) * -1);
 	z-index: -1;
 	pointer-events: none;
 	background: var(--glass);
 	backdrop-filter: blur(18px) saturate(1.12);
 	-webkit-backdrop-filter: blur(18px) saturate(1.12);
 	-webkit-mask-image:
-		linear-gradient(to right, transparent 0, #000 7.5rem, #000 calc(100% - 7.5rem), transparent 100%),
+		linear-gradient(to right, transparent 0, #000 var(--frost-fade), #000 calc(100% - var(--frost-fade)), transparent 100%),
 		linear-gradient(to bottom, transparent 0, #000 2.5rem, #000 calc(100% - 2.5rem), transparent 100%);
 	mask-image:
-		linear-gradient(to right, transparent 0, #000 7.5rem, #000 calc(100% - 7.5rem), transparent 100%),
+		linear-gradient(to right, transparent 0, #000 var(--frost-fade), #000 calc(100% - var(--frost-fade)), transparent 100%),
 		linear-gradient(to bottom, transparent 0, #000 2.5rem, #000 calc(100% - 2.5rem), transparent 100%);
 	-webkit-mask-composite: source-in;
 	mask-composite: intersect;
 }
 
 html[data-theme="Light"] .paneTop::before {
-	inset: -3rem -6.5rem -1.5rem;
+	inset: -3rem calc(var(--frost-bleed) * -1) -1.5rem;
 }
 
 html[data-theme="Light"] .paneEnd::before {
-	inset: -3rem -6.5rem -4.5rem;
+	inset: -3rem calc(var(--frost-bleed) * -1) -4.5rem;
+}
+
+@media (max-width: 1080px) {
+	html[data-theme="Light"] .pane::before {
+		--frost-bleed: 1.5rem;
+		--frost-fade: 2.25rem;
+	}
 }
 
 #stack {

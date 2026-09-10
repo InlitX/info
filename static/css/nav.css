@@ -210,16 +210,20 @@ html[data-theme="Dark"] .ttIcon :first-child path {
 }
 
 .mobileMenu {
-	position: relative;
-	z-index: 1;
-	top: 100%;
-	left: 0;
-	right: 0;
-	background: color-mix(in srgb, var(--bg) 94%, transparent);
-	backdrop-filter: blur(18px);
-	-webkit-backdrop-filter: blur(18px);
-	border-bottom: 1px solid var(--border);
-	padding: 0.5rem 1.5rem 1.25rem;
+	position: absolute;
+	z-index: 2;
+	top: calc(100% - 0.5rem);
+	left: 1.5rem;
+	right: 1.5rem;
+	max-width: calc(var(--wrap) - 3rem);
+	margin: 0 auto;
+	background: color-mix(in srgb, var(--bg) 92%, transparent);
+	backdrop-filter: blur(18px) saturate(1.1);
+	-webkit-backdrop-filter: blur(18px) saturate(1.1);
+	border: 1px solid var(--border);
+	border-radius: var(--r-lg);
+	box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.8);
+	padding: 0.25rem 1.1rem 0.4rem;
 	display: none;
 	flex-direction: column;
 }
