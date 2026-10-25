@@ -3,6 +3,7 @@ const SKILLS = [
 	["Dart", "dart"],
 	["Kotlin", "kotlin"],
 	["Java", "java"],
+	["C++", "cpp"],
 	["Python", "python"],
 	["TypeScript", "typescript"],
 	["JavaScript", "javascript"],

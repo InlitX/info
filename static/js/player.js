@@ -1,5 +1,12 @@
 const PLAYLIST = [
 	{
+		title: "Zin Li Fik",
+		artist: "ValerieBlud",
+		src: "./static/audio/valerieblud-zin-li-fik.mp3",
+		accent: "#d15e68",
+		cover: "./static/img/covers/valerieblud-zin-li-fik.webp"
+	},
+	{
 		title: "Sum 2 Prove",
 		artist: "Lil Baby",
 		src: "./static/audio/lil-baby-sum-2-prove.mp3",
@@ -14,11 +21,11 @@ const PLAYLIST = [
 		cover: "./static/img/covers/roddy-ricch-the-box.webp"
 	},
 	{
-		title: "F.N",
-		artist: "Lil Tjay",
-		src: "./static/audio/lil-tjay-fn.mp3",
-		accent: "#705ed1",
-		cover: "./static/img/covers/lil-tjay-fn.webp"
+		title: "Jealousy",
+		artist: "Rubii",
+		src: "./static/audio/rubii-jealousy.mp3",
+		accent: "#d15e5e",
+		cover: "./static/img/covers/rubii-jealousy.webp"
 	},
 	{
 		title: "Sin Tanto Royo",
@@ -28,11 +35,11 @@ const PLAYLIST = [
 		cover: "./static/img/covers/luis-tito-sin-tanto-royo.webp"
 	},
 	{
-		title: "Painting Pictures",
-		artist: "Superstar",
-		src: "./static/audio/superstar-painting-pictures.mp3",
-		accent: "#d18154",
-		cover: "./static/img/covers/superstar-painting-pictures.webp"
+		title: "Mélancolique",
+		artist: "Assia",
+		src: "./static/audio/assia-melancolique.mp3",
+		accent: "#d17b5e",
+		cover: "./static/img/covers/assia-melancolique.webp"
 	}
 ];
 

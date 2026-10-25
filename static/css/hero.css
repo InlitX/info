@@ -111,6 +111,10 @@
 	color: var(--fg-muted);
 }
 
+.heroProse + .heroProse {
+	margin-top: -0.75rem;
+}
+
 .heroProse strong {
 	font-weight: 500;
 	color: var(--fg);
